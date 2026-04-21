@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saif Belhasa Real Estate</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;400;700&family=Noto+Serif+JP:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Metropolis:wght@100;300;500&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --brand-serif: 'Playfair Display', serif;
+        }
+
+        /* Essential Page Branding Header (Hero) */
+        .project-hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1554435493-93422e8220c8?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.6) 100%);
+            z-index: 1;
+        }
+
+        .hero-top {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            z-index: 10;
+        }
+
+        .breadcrumbs {
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .breadcrumbs a {
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .breadcrumbs span {
+            margin: 0 10px;
+            opacity: 0.5;
+        }
+
+        .project-brand-container {
+            position: relative;
+            z-index: 10;
+            margin-top: -50px;
+        }
+
+        .project-logo {
+            font-family: var(--brand-serif);
+            font-size: clamp(5rem, 18vw, 10rem);
+            line-height: 0.8;
+            margin-bottom: 30px;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: -5px;
+            text-transform: lowercase;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 0 30px rgba(0,0,0,0.3);
+        }
+
+        .project-developer {
+            font-size: 0.75rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        .hero-bottom {
+            position: absolute;
+            bottom: 60px;
+            width: 100%;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .project-tagline {
+            font-family: var(--brand-serif);
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 400;
+        }
+
+        .scroll-down {
+            cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* Make standard site header visible on this page if needed */
+        .header.dark-text .logo a, 
+        .header.dark-text .nav-link {
+            color: #000;
+        }
+        .header.dark-text .menu-toggle span {
+            background-color: #000;
+        }
+        /* Page Content Sections */
+        .content-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        .container-narrow {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-title-large {
+            font-family: var(--brand-serif);
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #000;
+            font-weight: 400;
+        }
+
+        .section-desc {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            max-width: 1050px; /* Adjusted to keep text in 3 lines */
+            margin: 0 auto 50px;
+            color: #444;
+            font-weight: 300;
+        }
+
+        /* Property Specs Layout */
+        .property-specs-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            margin-bottom: 50px;
+            position: relative;
+            align-items: center;
+        }
+
+        .spec-col {
+            padding: 0 10px;
+            position: relative;
+        }
+
+        .spec-col:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background-color: rgba(0, 0, 0, 0.08);
+        }
+
+        .spec-big-value {
+            font-family: var(--brand-serif);
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 12px;
+            color: #000;
+            font-weight: 400;
+        }
+
+        .spec-small-label {
+            font-size: 0.85rem;
+            color: #666;
+            font-family: var(--font-sans);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .action-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn-dark {
+            background-color: #000;
+            color: #fff;
+            padding: 16px 40px;
+            text-decoration: none;
+            font-size: 0.65rem;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: 0.3s ease;
+            border-radius: 0;
+            display: inline-block;
+        }
+
+        .btn-dark:hover {
+            background-color: #333;
+        }
+
+        .full-width-image {
+            width: 100%;
+            height: 90vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .full-width-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.92) contrast(0.95); /* Calm, muted tone */
+        }
+
+        /* Amenities Slider */
+        .amenities-slider-section {
+            padding: 100px 0;
+            background-color: #ffffff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .slider-title {
+            font-family: var(--brand-serif);
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 80px;
+            color: #000;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .slider-track-box {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.6s cubic-bezier(0.2, 0, 0.2, 1);
+            width: max-content;
+        }
+
+        .amenity-card {
+            width: 280px;
+            aspect-ratio: 1/1;
+            background-color: #ffffff;
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            transition: 0.4s ease;
+        }
+
+        .amenity-card i {
+            display: block;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #1a1a1a;
+            opacity: 0.8;
+            transition: 0.3s ease;
+        }
+
+        .amenity-card:hover i {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .amenity-card h3 {
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            line-height: 1.5;
+            color: #333;
+            text-transform: uppercase;
+            font-weight: 400;
+            max-width: 180px;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            background-color: #fff;
+            color: #ccc;
+            transition: 0.3s ease;
+        }
+
+        .slider-arrow:hover {
+            border-color: #000;
+            color: #000;
+        }
+
+        .arrow-left { left: 0; }
+        .arrow-right { right: 0; }
+
+        @media (max-width: 768px) {
+            .slider-container { padding: 0 40px; }
+            .amenity-card { width: 220px; }
+        }
+
+        /* Interactive Gallery */
+        .gallery-section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .gallery-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .main-gallery-view {
+            width: 100%;
+            height: 70vh;
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .main-gallery-view img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+            filter: brightness(0.92) contrast(0.95); /* Calm, muted tone */
+        }
+
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .thumbnail-item {
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .thumbnail-item:hover {
+            opacity: 0.8;
+        }
+
+        .thumbnail-item.active {
+            border-color: #000;
+        }
+
+        .thumbnail-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Prime Vicinities */
+        .vicinities-section {
+            padding: 80px 0;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .vicinities-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .map-wrapper {
+            margin-top: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .map-wrapper img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Connectivity Grid */
+        .connectivity-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+
+        .connectivity-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1300px;
+            margin: 50px auto 0;
+            padding: 0 40px;
+        }
+
+        .landmark-card {
+            background-color: #ffffff;
+            border: 1px solid #eeeeee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: 0.3s ease;
+        }
+
+        .landmark-card:hover {
+            transform: translateY(-5px);
+            border-color: #000;
+        }
+
+        .landmark-card-content {
+            padding: 40px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .landmark-icon-circle {
+            width: 60px;
+            height: 60px;
+            background-color: #000000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .landmark-card h4 {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: #000;
+            font-weight: 500;
+            line-height: 1.4;
+            max-width: 154px;
+        }
+
+        .landmark-time-footer {
+            width: 100%;
+            background-color: #f5f5f5;
+            padding: 12px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            color: #000;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .landmark-time-footer i {
+            font-size: 0.9rem;
+        }
+
+        /* Payment Plan Section */
+        .payment-plan-section {
+            padding: 100px 0;
+            background-color: #f3f4f4;
+            text-align: center;
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            max-width: 1300px;
+            margin: 80px auto;
+            padding: 0 40px;
+            gap: 0;
+        }
+
+        .payment-item {
+            padding: 0 20px;
+            border-left: 1px solid rgba(0,0,0,0.08);
+            text-align: left;
+            margin-bottom: 60px;
+        }
+
+        .payment-item:first-child,
+        .payment-item:nth-child(6) {
+            border-left: none;
+        }
+
+        .payment-value {
+            font-family: var(--brand-serif);
+            font-size: 2.5rem;
+            color: #000;
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .payment-label {
+            font-size: 0.9rem;
+            color: #000;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .payment-sub {
+            font-size: 0.75rem;
+            color: #666;
+            display: block;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .faq-header h2 {
+            font-family: var(--brand-serif);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .faq-header p {
+            font-family: var(--brand-serif);
+            font-size: 1.4rem;
+            color: #333;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 25px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: none;
+            border: none;
+            text-align: left;
+            font-family: var(--brand-serif);
+            font-size: 1.15rem;
+            color: #000;
+        }
+
+        .faq-toggle {
+            font-size: 1.2rem;
+            color: #999;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 25px;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg); /* Simple + to x or use icon swap */
+        }
+
+        /* Modal Styles Refined */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.82);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 15px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            width: 100%;
+            max-width: 460px; /* More compact and neat */
+            padding: 45px 35px;
+            position: relative;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 2px; /* Very minimal for luxury feel */
+        }
+
+        /* Customize scrollbar for modal */
+        .modal-content::-webkit-scrollbar {
+            width: 4px;
+        }
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #b58e58;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background-color: #f5f5f5;
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .modal-close:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            font-family: var(--brand-serif);
+            font-size: 1.6rem;
+            color: #000;
+            margin-bottom: 12px;
+            line-height: 1.25;
+        }
+
+        .modal-header p {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            padding: 11px 14px;
+            border: 1px solid #e5e5e5;
+            font-size: 0.85rem;
+            outline: none;
+            background-color: #fafafa;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #b58e58;
+            background-color: #fff;
+        }
+
+        .submit-btn-gold {
+            background: #000; /* Moving to black for more 'neat' premium look */
+            color: #fff;
+            border: none;
+            padding: 16px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .submit-btn-gold:hover {
+            background: #b58e58;
+        }
+
+        .modal-footer-note {
+            display: block;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #999;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.75rem;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .checkbox-group input {
+            margin-top: 2px;
+        }
+
+        /* Combined Media Queries for Responsiveness */
+        @media (max-width: 1200px) {
+            .connectivity-grid, .payment-grid, .gallery-section {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .property-specs-row {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px 0;
+            }
+            .spec-col:nth-child(2n)::after {
+                display: none;
+            }
+            .connectivity-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .payment-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0;
+            }
+            .payment-item {
+                border-left: none;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                padding: 30px 20px;
+                margin-bottom: 0;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title-large {
+                font-size: 2rem;
+            }
+            .poem-content h2 {
+                font-size: 1.8rem;
+            }
+            .gallery-thumbnails {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .amenity-slider-container {
+                padding-bottom: 50px;
+            }
+            .amenities-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            .faq-header p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .project-hero {
+                padding: 0 20px;
+            }
+            .project-logo {
+                font-size: 5rem;
+                letter-spacing: -2px;
+            }
+            .property-specs-row {
+                grid-template-columns: 1fr;
+            }
+            .spec-col::after {
+                display: none;
+            }
+            .action-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .connectivity-grid, .payment-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-row { 
+                grid-template-columns: 1fr; 
+            }
+            .modal-content { 
+                padding: 40px 20px; 
+            }
+            .modal-close { 
+                top: 10px; 
+                right: 10px; 
+            }
+            .poem-section, .narrative-section {
+                padding: 60px 0;
+            }
+            .amenity-card {
+                flex: 0 0 100%;
+                width: 100%;
+                min-height: 300px;
+                padding: 40px 20px;
+            }
+            .slider-track {
+                width: 100%;
+                gap: 0;
+            }
+            .slider-container {
+                padding: 0 50px;
+            }
+            .slider-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 0.8rem;
+            }
+            .payment-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- The "Header" (Hero Section) from your design image -->
+    <section class="project-hero">
+        <div class="hero-top">
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="index.html#properties">Projects</a>
+                <span>/</span>
+                <a href="#">Saif Belhasa Real Estate</a>
+            </div>
+        </div>
+
+        <div class="project-brand-container">
+            <h1 class="project-logo">Luxury Villas</h1>
+            <!-- <p class="project-developer">A SBH DEVELOPMENT</p> -->
+        </div>
+
+        <div class="hero-bottom">
+            <!-- <h2 class="project-tagline">Timeless Island Living</h2> -->
+            <div class="scroll-down">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container-narrow">
+            <h2 class="section-title-large">Embrace a Poem in Design</h2>
+            <p class="section-desc">
+                Saif Belhasa Real Estate's architectural form draws from the quiet elegance of a pearl, rare, luminous, and intimately scaled. With just 57 residences across a 2B+G+6F+R structure, each home is designed for spacious living, privacy, and panoramic connection to nature. From loft-inspired duplexes and penthouses with garden courtyards to flowing balconies and high ceilings, the architecture frames a life that feels expansive, personal, and purposefully placed by the sea.
+            </p>
+
+            <div class="property-specs-row">
+                <div class="spec-col">
+                    <span class="spec-big-value">2.16 Mn. AED</span>
+                    <span class="spec-small-label">Starting Price</span>
+                </div>
+                <div class="spec-col">
+                    <span class="spec-big-value">57</span>
+                    <span class="spec-small-label">Residential Apartments</span>
+                </div>
+                <div class="spec-col">
+                    <span class="spec-big-value">2B+G+6F+R</span>
+                    <span class="spec-small-label">Configuration</span>
+                </div>
+                <div class="spec-col">
+                    <span class="spec-big-value">Q4 2027</span>
+                    <span class="spec-small-label">Handover</span>
+                </div>
+            </div>
+
+            <div class="action-row">
+                <a href="#" class="btn-dark">REGISTER YOUR INTEREST</a>
+                <a href="#" class="btn-dark">DOWNLOAD BROCHURE</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="full-width-image">
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80" alt="Saif Belhasa Real Estate Architectural Excellence">
+    </section>
+
+    <section class="amenities-slider-section" id="amenities">
+        <h2 class="slider-title">AMENITIES</h2>
+        
+        <div class="slider-container">
+            <div class="slider-arrow arrow-left" id="prev-amenity">
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            
+            <div class="slider-track-box">
+                <div class="slider-track" id="amenity-track">
+                    <div class="amenity-card">
+                        <i class="fa-solid fa-hot-tub-person"></i>
+                        <h3>Jacuzzi Lounge for Deep Relaxation</h3>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fa-solid fa-couch"></i>
+                        <h3>Elevated View Decks</h3>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fa-solid fa-spa"></i>
+                        <h3>Sauna & Steam Therapy Rooms</h3>
+                    </div>
+                    <!-- Duplicate for loop feeling -->
+                    <div class="amenity-card">
+                        <i class="fa-solid fa-umbrella-beach"></i>
+                        <h3>Private Beach Access</h3>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fa-solid fa-dumbbell"></i>
+                        <h3>Fitness Studio</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-arrow arrow-right" id="next-amenity">
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class="full-width-image" style="height: 80vh;">
+        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1920&q=80" alt="Saif Belhasa Real Estate Beachfront View">
+    </section>
+
+    <section class="content-section">
+        <div class="container-narrow">
+            <h2 class="section-title-large">Where Island Dreams Take Shape</h2>
+            <p class="section-desc" style="max-width: 900px;">
+                At the heart of it all is the Spanish-style courtyard, a breathtaking centrepiece that captures light and frames the tranquil water beneath a soaring skylight. It's a sanctuary where stillness speaks and where Mediterranean soul meets coastal serenity. Saif Belhasa Real Estate's courtyard isn't just central, it's unforgettable.
+            </p>
+        </div>
+    </section>
+
+    <section class="full-width-image" style="height: 80vh;">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80" alt="Saif Belhasa Real Estate Interior Luxury">
+    </section>
+
+    <section class="content-section">
+        <div class="container-narrow">
+            <h2 class="section-title-large">Island Rhythm Elevates Urban Serenity</h2>
+            <p class="section-desc" style="max-width: 950px; margin-bottom: 50px;">
+                Life at Saif Belhasa Real Estate flows with the rhythm of the sea - fluid, enriching, and serene. Tide-kissed light fills your luxury residence by morning; starlit pergolas cradle your nights. Palm leaves calmly sway, citrus lingers, and every corner invites presence, peace, and a quiet return to what matters.
+            </p>
+            <div class="action-row">
+                <a href="#" class="btn-dark">REGISTER YOUR INTEREST</a>
+                <a href="#" class="btn-dark">DOWNLOAD BROCHURE</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="full-width-image" style="height: 80vh;">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80" alt="Saif Belhasa Real Estate High-End Fitness Bay">
+    </section>
+
+    <section class="content-section">
+        <div class="container-narrow">
+            <h2 class="section-title-large">Rooted In Restraint And Balance</h2>
+            <p class="section-desc" style="max-width: 950px;">
+                Saif Belhasa Real Estate's interiors are composed with nature's goodness in mind. Earthy textures, organic lines, and soft light create a calm backdrop for a life that feels grounded yet exquisitely elevated. It invites it quietly, through thoughtful contrasts and materials that breathe.
+            </p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <div class="main-gallery-view">
+                <img id="main-image" src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80" alt="Saif Belhasa Real Estate Principal Gallery">
+            </div>
+            
+            <div class="thumbnail-grid">
+                <div class="thumbnail-item active" data-src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80">
+                    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" alt="Exterior View">
+                </div>
+                <div class="thumbnail-item" data-src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1920&q=80">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" alt="Beach View">
+                </div>
+                <div class="thumbnail-item" data-src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Interior View">
+                </div>
+                <div class="thumbnail-item" data-src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Gym View">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vicinities-section">
+        <div class="vicinities-container">
+            <h2 class="section-title-large">THE PRIME VICINITIES</h2>
+            <div class="map-wrapper">
+                <img src="Map.png" alt="Al Marjan Island Map">
+            </div>
+        </div>
+    </section>
+
+    <section class="connectivity-section">
+        <div class="connectivity-grid">
+            <!-- Row 1 -->
+            <div class="landmark-card">
+                <div class="landmark-card-content">
+                    <div class="landmark-icon-circle"><i class="fa-solid fa-hotel"></i></div>
+                    <h4>Wynn Resort</h4>
+                </div>
+                <div class="landmark-time-footer">
+                    <i class="fa-solid fa-car"></i> 08 minute Drive
+                </div>
+            </div>
+            <div class="landmark-card">
+                <div class="landmark-card-content">
+                    <div class="landmark-icon-circle"><i class="fa-solid fa-city"></i></div>
+                    <h4>RAK Central</h4>
+                </div>
+                <div class="landmark-time-footer">
+                    <i class="fa-solid fa-car"></i> 10 minute Drive
+                </div>
+            </div>
+            <div class="landmark-card">
+                <div class="landmark-card-content">
+                    <div class="landmark-icon-circle"><i class="fa-solid fa-water"></i></div>
+                    <h4>Dreamland Aqua Park</h4>
+                </div>
+                <div class="landmark-time-footer">
+                    <i class="fa-solid fa-car"></i> 16 minute Drive
+                </div>
+            </div>
+            <div class="landmark-card">
+                <div class="landmark-card-content">
+                    <div class="landmark-icon-circle"><i class="fa-solid fa-umbrella-beach"></i></div>
+                    <h4>Rixos Bab-al-Bahr Resort</h4>
+                </div>
+                <div class="landmark-time-footer">
+                    <i class="fa-solid fa-car"></i> 05 minute Drive
+                </div>
+            </div>
+            <!-- Row 2 -->
+            <div class="landmark-card">
+                <div class="landmark-card-content">
+                    <div class="landmark-icon-circle"><i class="fa-solid fa-golf-ball-tee"></i></div>
+                    <h4>Al Hamra Golf Club</h4>
+                </div>
+                <div class="landmark-time-footer">
+                    <i class="fa-solid fa-car"></i> 13 minute Drive
+                </div>
+            </div>
+            <div class="landmark-card">
+                <div class="landmark-card-content">
+                    <div class="landmark-icon-circle"><i class="fa-solid fa-building-columns"></i></div>
+                    <h4>RAK Exhibition Centre</h4>
+                </div>
+                <div class="landmark-time-footer">
+                    <i class="fa-solid fa-car"></i> 18 minute Drive
+                </div>
+            </div>
+            <div class="landmark-card">
+                <div class="landmark-card-content">
+                    <div class="landmark-icon-circle"><i class="fa-solid fa-house-chimney"></i></div>
+                    <h4>Al Hamra Village</h4>
+                </div>
+                <div class="landmark-time-footer">
+                    <i class="fa-solid fa-car"></i> 13 minute Drive
+                </div>
+            </div>
+            <div class="landmark-card">
+                <div class="landmark-card-content">
+                    <div class="landmark-icon-circle"><i class="fa-solid fa-road"></i></div>
+                    <h4>Al Marjan Island Boulevard</h4>
+                </div>
+                <div class="landmark-time-footer">
+                    <i class="fa-solid fa-car"></i> 05 minute Drive
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="payment-plan-section">
+        <div class="container">
+            <h2 class="section-title-large">Flexible Payment Plan</h2>
+            
+            <div class="payment-grid">
+                <!-- Row 1 -->
+                <div class="payment-item">
+                    <span class="payment-value" data-target="10">0%</span>
+                    <span class="payment-label">On Booking</span>
+                    <span class="payment-sub">Immediate</span>
+                </div>
+                <div class="payment-item">
+                    <span class="payment-value" data-target="5">0%</span>
+                    <span class="payment-label">Installment 1</span>
+                    <span class="payment-sub">1 month from booking</span>
+                </div>
+                <div class="payment-item">
+                    <span class="payment-value" data-target="5">0%</span>
+                    <span class="payment-label">Installment 2</span>
+                    <span class="payment-sub">2 months from booking</span>
+                </div>
+                <div class="payment-item">
+                    <span class="payment-value" data-target="5">0%</span>
+                    <span class="payment-label">Installment 3</span>
+                    <span class="payment-sub">5 months from booking</span>
+                </div>
+                <div class="payment-item">
+                    <span class="payment-value" data-target="5">0%</span>
+                    <span class="payment-label">Installment 4</span>
+                    <span class="payment-sub">8 months from booking</span>
+                </div>
+                <!-- Row 2 -->
+                <div class="payment-item">
+                    <span class="payment-value" data-target="5">0%</span>
+                    <span class="payment-label">Installment 5</span>
+                    <span class="payment-sub">11 months from booking</span>
+                </div>
+                <div class="payment-item">
+                    <span class="payment-value" data-target="5">0%</span>
+                    <span class="payment-label">Installment 6</span>
+                    <span class="payment-sub">14 months from booking</span>
+                </div>
+                <div class="payment-item">
+                    <span class="payment-value" data-target="5">0%</span>
+                    <span class="payment-label">Installment 7</span>
+                    <span class="payment-sub">17 months from booking</span>
+                </div>
+                <div class="payment-item">
+                    <span class="payment-value" data-target="5">0%</span>
+                    <span class="payment-label">Installment 8</span>
+                    <span class="payment-sub">20 months from booking</span>
+                </div>
+                <div class="payment-item">
+                    <span class="payment-value" data-target="50">0%</span>
+                    <span class="payment-label">Installment 9</span>
+                    <span class="payment-sub">On Completion</span>
+                </div>
+            </div>
+
+            <div class="action-row">
+                <a href="#" class="btn-dark">REGISTER YOUR INTEREST</a>
+                <a href="#" class="btn-dark">DOWNLOAD BROCHURE</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="faq-container">
+            <div class="faq-header">
+                <h2>FAQs</h2>
+                <p>Know more about Saif Belhasa Real Estate at Al Marjan Island</p>
+            </div>
+
+            <div class="faq-list">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Where is Saif Belhasa Real Estate by BNW located?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Saif Belhasa Real Estate by BNW Developments is located in the majestic Al Marjan Island in the emirate of Ras Al Khaimah (RAK).</p>
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What types and sizes of units are available in Saif Belhasa Real Estate?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We offer a curated selection of luxury residences from premium studios to expansive 3-bedroom suites, all designed with beach-facing views and open-plan layouts.</p>
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What amenities are available at Saif Belhasa Real Estate on Al Marjan Island?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our residents enjoy access to a private beachfront, high-end fitness bay, infinity pools, starlit pergolas, and a dedicated wellness spa designed for ultimate serenity.</p>
+                    </div>
+                </div>
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>When is the expected completion date for Saif Belhasa Real Estate?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The project is scheduled for completion in Q4 2026, with institutional-grade quality control and a detailed construction timeline shared with all owners.</p>
+                    </div>
+                </div>
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I register my interest for a specific unit type?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, you can register your interest by clicking the "Register Your Interest" button. Our specialist advisors will then reach out to guide you through the available portfolio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <!-- Column 1: About -->
+            <div class="footer-col footer-about">
+                <h2 class="footer-logo">SAIF BELHASA</h2>
+                <p class="footer-desc">
+                    Saif Belhasa Real Estate, a leading real estate property developer in UAE, delivers a total solution to all kinds of Real Estate projects, from initial concept through completion and handover to after sale maintenance and support.
+                </p>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-col footer-links">
+                <h3 class="footer-title">QUICK LINKS</h3>
+                <ul class="footer-menu">
+                    <li><a href="index.html">About Saif Belhasa</a></li>
+                    <li><a href="index.html#properties">Communities</a></li>
+                    <li><a href="property.html">Properties</a></li>
+                    <li><a href="#">Faqs</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Contact Us -->
+            <div class="footer-col footer-contact">
+                <h3 class="footer-title">CONTACT US</h3>
+                <ul class="contact-list">
+                    <li><i class="fa-solid fa-phone"></i> +971 4 324 3535</li>
+                    <li><i class="fa-solid fa-envelope"></i> info@saifbelhasagroup.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> P.O. Box 71707, Al Quoz,<br>Dubai, UAE</li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Newsletter -->
+            <div class="footer-col footer-newsletter">
+                <h3 class="footer-title">SUBSCRIBE TO NEWSLETTER</h3>
+                <div class="newsletter-box">
+                    <input type="email" placeholder="Enter Your Email">
+                    <button class="newsletter-btn"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <a href="#" class="channel-partner-btn">BECOME A CHANNEL PARTNER</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Saif Belhasa Real Estate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="lead-modal">
+        <div class="modal-content">
+            <div class="modal-close" id="close-modal">&times;</div>
+            <div class="modal-header">
+                <h2 id="modal-title">Get Expert Advice On Saif Belhasa Real Estate</h2>
+                <p id="modal-desc">Whether you're exploring investment opportunities or searching for your dream home, our Saif Belhasa Real Estate specialists are here to guide you every step of the way.</p>
+            </div>
+            
+            <form class="modal-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name*</label>
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email*</label>
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Phone Number*</label>
+                    <input type="tel" value="+971 " required>
+                </div>
+
+                <div class="form-group">
+                    <label>Apartment Type</label>
+                    <select>
+                        <option value="" disabled selected>Select Apartment Type</option>
+                        <option value="studio">Studio</option>
+                        <option value="1br">1 Bedroom</option>
+                        <option value="2br">2 Bedroom</option>
+                        <option value="3br">3 Bedroom</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea placeholder="Please specify if you want to add something for us to understand better." rows="3"></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" required>
+                    <span>You agree to our <a href="#" style="color: #b58e58;">terms and condition</a> by filling this form.</span>
+                </div>
+
+                <button type="submit" class="submit-btn-gold">SUBMIT</button>
+                <span class="modal-footer-note">*Direct Developer Offer. No Commission.</span>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Amenities Slider
+        const track = document.getElementById('amenity-track');
+        const nextBtn = document.getElementById('next-amenity');
+        const prevBtn = document.getElementById('prev-amenity');
+        const firstCard = document.querySelector('.amenity-card');
+        let index = 0;
+        const totalItems = document.querySelectorAll('.amenity-card').length;
+
+        const getStepWidth = () => {
+            if (!firstCard) return 0;
+            const style = window.getComputedStyle(firstCard);
+            const marginRight = parseInt(style.marginRight) || 0;
+            return firstCard.offsetWidth + marginRight;
+        };
+
+        if (track && nextBtn && prevBtn) {
+            nextBtn.addEventListener('click', () => {
+                const step = getStepWidth();
+                const visibleCount = window.innerWidth <= 600 ? 1 : 4;
+                if (index < totalItems - visibleCount) {
+                    index++;
+                    track.style.transform = `translateX(-${index * step}px)`;
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                const step = getStepWidth();
+                if (index > 0) {
+                    index--;
+                    track.style.transform = `translateX(-${index * step}px)`;
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                index = 0;
+                track.style.transform = `translateX(0)`;
+            });
+        }
+
+        // Gallery Interactivity
+        const mainImage = document.getElementById('main-image');
+        const thumbnails = document.querySelectorAll('.thumbnail-item');
+
+        if (mainImage && thumbnails.length > 0) {
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    const newSrc = this.getAttribute('data-src');
+                    mainImage.style.opacity = '0.4';
+                    setTimeout(() => {
+                        mainImage.src = newSrc;
+                        mainImage.style.opacity = '1';
+                        thumbnails.forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                    }, 300);
+                });
+            });
+        }
+
+        // Payment Plan Number Animation
+        const animateNumbers = () => {
+            const values = document.querySelectorAll('.payment-value');
+            values.forEach(val => {
+                const target = parseInt(val.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        val.innerText = target + '%';
+                        clearInterval(timer);
+                    } else {
+                        val.innerText = Math.ceil(current) + '%';
+                    }
+                }, 30);
+            });
+        };
+
+        const paymentGrid = document.querySelector('.payment-grid');
+        if (paymentGrid) {
+            const observerOptions = { threshold: 0.1 }; // Lower threshold for mobile compatibility
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateNumbers();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            observer.observe(paymentGrid);
+        }
+
+        // FAQ Accordion Logic
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close other items
+                faqItems.forEach(otherItem => otherItem.classList.remove('active'));
+                
+                // Toggle current
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('lead-modal');
+        const closeModal = document.getElementById('close-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+
+        const openModal = (type) => {
+            if (modal) {
+                if (type === 'brochure') {
+                    modalTitle.innerText = 'Download Saif Belhasa Real Estate Brochure';
+                    modalDesc.innerText = 'Please provide your details below to receive the comprehensive project brochure and floor plans.';
+                } else {
+                    modalTitle.innerText = 'Get Expert Advice On Saif Belhasa Real Estate';
+                    modalDesc.innerText = 'Whether you\'re exploring investment opportunities or searching for your dream home, our Saif Belhasa Real Estate specialists are here to guide you every step of the way.';
+                }
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scroll
+            }
+        };
+
+        const closeLeadModal = () => {
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        // Hook up all buttons
+        document.querySelectorAll('.btn-dark, .btn-outline').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const text = btn.innerText.toLowerCase();
+                if (text.includes('brochure')) {
+                    openModal('brochure');
+                } else {
+                    openModal('interest');
+                }
+            });
+        });
+
+        if (closeModal) closeModal.addEventListener('click', closeLeadModal);
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeLeadModal();
+            });
+        }
+    </script>
+</body>
+</html>
